@@ -21,3 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "EMApp"
 include(":app")
+include(":data")
+include(":uikit")
+include(":domain")
