@@ -37,6 +37,12 @@ dependencies {
     // modules
     implementation(project(":domain"))
 
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+//    implementation("com.google.code.gson:gson:2.10.1")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
