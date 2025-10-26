@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.work.emapp"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.work.emapp"
@@ -45,6 +45,9 @@ dependencies {
     implementation(project(":uikit"))
     implementation(project(":data"))
     implementation(project(":domain"))
+
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
