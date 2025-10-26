@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 @Composable
 fun HomeScreen(
     onCardClick: () -> Unit,
+    viewModel: HomeViewModel,
     ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -19,8 +20,13 @@ fun HomeScreen(
         verticalArrangement = Arrangement.Center
     ) {
         Text("Экран Главная")
-        Button(onClick = { onCardClick() }) {
-            Text("Открыть карточку")
+        for (i in 1..9){
+            Button(onClick = {
+                onCardClick()
+                viewModel.chooseCard(i)
+            }) {
+                Text("Открыть карточку $i")
+            }
         }
     }
 }

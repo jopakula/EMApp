@@ -12,12 +12,17 @@ import androidx.compose.ui.Modifier
 @Composable
 fun CardDetailScreen(
     onBackClick: () -> Unit,
+    viewModel: HomeViewModel,
     ) {
+    val id = viewModel.selectedCard.value
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        Text(
+            text = "Card $id"
+        )
         Button(onClick = onBackClick) {
             Text("Назад")
         }

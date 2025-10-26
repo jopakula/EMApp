@@ -1,6 +1,7 @@
 package com.work.emapp.navigation.graph
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,12 +13,14 @@ import com.work.emapp.ui.account.AccountScreen
 import com.work.emapp.ui.favorites.FavoritesScreen
 import com.work.emapp.ui.home.CardDetailScreen
 import com.work.emapp.ui.home.HomeScreen
+import com.work.emapp.ui.home.HomeViewModel
 
 @Composable
 fun BottomNavGraph(
     navController: NavHostController,
     rootNavController: NavHostController
 ) {
+    val viewModel: HomeViewModel = viewModel()
     NavHost(
         navController = navController,
         startDestination = BottomBarScreens.Home.route,
@@ -29,12 +32,13 @@ fun BottomNavGraph(
         ) {
             composable(route = HomeScreens.Home.route) {
                 HomeScreen(
+                    viewModel = viewModel,
                     onCardClick = { navController.navigate(HomeScreens.CardDetail.route) }
                 )
             }
             composable(route = HomeScreens.CardDetail.route) {
                 CardDetailScreen(
-
+                    viewModel = viewModel,
                     onBackClick = {
                         navController.popBackStack()
                     }
