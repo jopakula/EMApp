@@ -11,8 +11,18 @@ composeBom = "2024.09.00"
 appcompat = "1.7.1"
 material = "1.13.0"
 jetbrainsKotlinJvm = "2.0.21"
+navigationCompose = "2.9.5"
+androidx-lifecycle = "2.9.4"
 
 [libraries]
+
+# Lifecycle
+androidx-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidx-lifecycle" }
+
+
+# Navigation
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
