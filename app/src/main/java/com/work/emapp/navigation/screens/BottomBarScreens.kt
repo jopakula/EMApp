@@ -10,16 +10,16 @@ sealed class BottomBarScreens(
     object Home : BottomBarScreens(
         route = "home",
         title = "Главная",
-        iconResId = R.drawable.ic_launcher_background
+        iconResId = R.drawable.house
     )
     object Favorites : BottomBarScreens(
         route = "favorites",
         title = "Избранное",
-        iconResId = R.drawable.ic_launcher_background
+        iconResId = R.drawable.bookmark
     )
     object Account : BottomBarScreens(
         route = "account",
         title = "Аккаунт",
-        iconResId = R.drawable.ic_launcher_background
+        iconResId = R.drawable.person
     )
 }

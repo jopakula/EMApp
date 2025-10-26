@@ -16,6 +16,9 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.work.emapp.navigation.screens.BottomBarScreens
+import com.work.uikit.common.DarkGray
+import com.work.uikit.common.SelectedColor
+import com.work.uikit.common.UnselectedColor
 
 @Composable
 fun BottomBar(navController: NavHostController) {
@@ -28,7 +31,7 @@ fun BottomBar(navController: NavHostController) {
     val currentDestination = navBackStackEntry?.destination
 
     NavigationBar(
-        containerColor = Color(0xFFE91E63)
+        containerColor = DarkGray
     ) {
         screens.forEach { screen ->
             AddItem(
@@ -67,10 +70,10 @@ fun RowScope.AddItem(
             }
         },
         colors = NavigationBarItemDefaults.colors(
-            unselectedIconColor = Color.White.copy(alpha = 0.6f),
-            unselectedTextColor = Color.White.copy(alpha = 0.6f),
-            selectedIconColor = Color.White,
-            selectedTextColor = Color.White,
+            unselectedIconColor = UnselectedColor,
+            unselectedTextColor = UnselectedColor,
+            selectedIconColor = SelectedColor,
+            selectedTextColor = SelectedColor,
             indicatorColor = Color.Transparent
         )
     )
