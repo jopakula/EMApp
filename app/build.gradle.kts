@@ -52,6 +52,10 @@ dependencies {
     // Lifecycle
     implementation(libs.androidx.lifecycle.livedata)
 
+    // Koin
+    implementation (libs.koin.androidx.compose)
+    implementation (libs.koin.core)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

@@ -34,14 +34,15 @@ android {
 
 dependencies {
 
-    // modules
+    // Modules
     implementation(project(":domain"))
 
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
-//    implementation("com.google.code.gson:gson:2.10.1")
+    // Koin
+    implementation (libs.koin.core)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
