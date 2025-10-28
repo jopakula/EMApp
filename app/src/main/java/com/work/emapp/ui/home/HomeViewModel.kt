@@ -4,14 +4,16 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.work.data.Course
-import com.work.data.FavoritesRepository
-import com.work.data.MockData
+import com.work.data.localDataSource.courses.CoursesRepository
+import com.work.data.localDataSource.favorites.FavoritesRepository
+import com.work.data.localDataSource.models.Course
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
+    private val coursesRepository: CoursesRepository,
     private val favoritesRepository: FavoritesRepository
 ) : ViewModel() {
+
     private val _courses = mutableStateOf<List<Course>>(emptyList())
     val courses: State<List<Course>> = _courses
 
@@ -23,9 +25,9 @@ class HomeViewModel(
 
     init {
         viewModelScope.launch {
-            _courses.value = MockData.getCourses()
-            favoritesRepository.getFavoriteIdsFlow().collect { favoriteCourses ->
-                _favoriteIds.value = favoriteCourses.favoriteIds
+            _courses.value = coursesRepository.getCourses()
+            favoritesRepository.getFavoriteIdsFlow().collect { data ->
+                _favoriteIds.value = data.favoriteIds
             }
         }
     }
@@ -42,9 +44,5 @@ class HomeViewModel(
                 favoritesRepository.addFavorite(courseId)
             }
         }
-    }
-
-    suspend fun isCourseFavorite(courseId: Int): Boolean {
-        return favoritesRepository.isFavorite(courseId)
     }
 }

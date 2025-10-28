@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.work.data.Course
+import com.work.data.localDataSource.models.Course
 
 @Composable
 fun HomeScreen(

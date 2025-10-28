@@ -1,6 +1,7 @@
-package com.work.data
+package com.work.data.localDataSource.favorites
 
 import android.app.Application
+import com.work.data.localDataSource.models.FavoriteCourses
 import io.github.xxfast.kstore.KStore
 import io.github.xxfast.kstore.file.storeOf
 import kotlinx.coroutines.flow.Flow

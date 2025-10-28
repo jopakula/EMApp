@@ -1,5 +1,6 @@
-package com.work.data
+package com.work.data.localDataSource.favorites
 
+import com.work.data.localDataSource.models.FavoriteCourses
 import kotlinx.coroutines.flow.Flow
 
 interface FavoritesRepository {
