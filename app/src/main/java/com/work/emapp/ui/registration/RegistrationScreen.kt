@@ -81,6 +81,14 @@ fun RegistrationScreen(onRegisterSuccess: () -> Unit) {
         }
 
         Button(
+            onClick = onRegisterSuccess,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("To main")
+        }
+
+
+        Button(
             onClick = {
                 openUrl(context = context, url = "https://vk.com/")
             }

@@ -1,5 +1,6 @@
 package com.work.emapp.di
 
+import com.work.emapp.ui.account.AccountViewModel
 import com.work.emapp.ui.favorites.FavoritesViewModel
 import com.work.emapp.ui.home.HomeViewModel
 import org.koin.core.module.dsl.viewModel
@@ -21,6 +22,13 @@ val appModule = module {
             getCoursesUseCase = get(),
             getFavoriteIdsFlowUseCase = get(),
             toggleFavoriteUseCase = get(),
+        )
+    }
+
+    viewModel {
+        AccountViewModel(
+            getCoursesUseCase = get(),
+            getFavoriteIdsFlowUseCase = get(),
         )
     }
 
