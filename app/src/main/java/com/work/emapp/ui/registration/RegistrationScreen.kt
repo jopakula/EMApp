@@ -15,12 +15,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.work.uikit.inputField.EmailMaskTransformation
 import com.work.uikit.inputField.MyInputField
+import com.work.uikit.inputField.openUrl
 
 @Composable
 fun RegistrationScreen(onRegisterSuccess: () -> Unit) {
@@ -30,6 +32,8 @@ fun RegistrationScreen(onRegisterSuccess: () -> Unit) {
     val emailRegex = Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")
     val isEmailValid = email.isNotBlank() && emailRegex.matches(email)
     val isButtonEnabled = isEmailValid && password.isNotBlank()
+
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
@@ -74,6 +78,26 @@ fun RegistrationScreen(onRegisterSuccess: () -> Unit) {
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Зарегистрироваться")
+        }
+
+        Button(
+            onClick = {
+                openUrl(context = context, url = "https://vk.com/")
+            }
+        ) {
+            Text(
+                text = "Open VK"
+            )
+        }
+
+        Button(
+            onClick = {
+                openUrl(context = context, url = "https://ok.com/")
+            }
+        ) {
+            Text(
+                text = "Open OK"
+            )
         }
     }
 }
