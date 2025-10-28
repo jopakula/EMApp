@@ -1,6 +1,7 @@
 package com.work.emapp.ui.home
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,7 +16,9 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -27,16 +30,25 @@ import com.work.emapp.R
 
 @Composable
 fun CourseCard(
+    modifier: Modifier = Modifier,
     course: Course,
     isFavorite: Boolean,
-    onClick: () -> Unit,
+    onClick: () -> Unit = {},
     onFavoriteClick: () -> Unit,
-    modifier: Modifier = Modifier
+    clickable: Boolean = true,
 ) {
+
+    val interactionSource = remember { MutableInteractionSource() }
+
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { onClick() },
+            .clickable(
+                onClick = onClick,
+                enabled = clickable,
+                indication = ripple(),
+                interactionSource = interactionSource,
+            ),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         shape = RoundedCornerShape(8.dp)
     ) {

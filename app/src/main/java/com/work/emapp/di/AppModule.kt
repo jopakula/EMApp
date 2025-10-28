@@ -13,4 +13,10 @@ val appModule = module {
         )
     }
 
+    viewModel {
+        FavoritesViewModel(
+            favoritesRepository = get()
+        )
+    }
+
 }
