@@ -9,15 +9,18 @@ val appModule = module {
 
     viewModel {
         HomeViewModel(
-            favoritesRepository = get(),
-            coursesRepository = get(),
+            getCoursesUseCase = get(),
+            getFavoriteIdsFlowUseCase = get(),
+            toggleFavoriteUseCase = get(),
+
         )
     }
 
     viewModel {
         FavoritesViewModel(
-            favoritesRepository = get(),
-            coursesRepository = get(),
+            getCoursesUseCase = get(),
+            getFavoriteIdsFlowUseCase = get(),
+            toggleFavoriteUseCase = get(),
         )
     }
 

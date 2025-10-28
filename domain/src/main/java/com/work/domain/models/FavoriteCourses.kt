@@ -1,4 +1,4 @@
-package com.work.data.localDataSource.models
+package com.work.domain.models
 
 import kotlinx.serialization.Serializable
 

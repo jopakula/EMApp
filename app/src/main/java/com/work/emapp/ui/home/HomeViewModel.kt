@@ -4,14 +4,16 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.work.data.localDataSource.courses.CoursesRepository
-import com.work.data.localDataSource.favorites.FavoritesRepository
-import com.work.data.localDataSource.models.Course
+import com.work.domain.models.Course
+import com.work.domain.useCases.GetCoursesUseCase
+import com.work.domain.useCases.GetFavoriteIdsFlowUseCase
+import com.work.domain.useCases.ToggleFavoriteUseCase
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val coursesRepository: CoursesRepository,
-    private val favoritesRepository: FavoritesRepository
+    private val getCoursesUseCase: GetCoursesUseCase,
+    private val getFavoriteIdsFlowUseCase: GetFavoriteIdsFlowUseCase,
+    private val toggleFavoriteUseCase: ToggleFavoriteUseCase,
 ) : ViewModel() {
 
     private val _courses = mutableStateOf<List<Course>>(emptyList())
@@ -25,9 +27,9 @@ class HomeViewModel(
 
     init {
         viewModelScope.launch {
-            _courses.value = coursesRepository.getCourses()
-            favoritesRepository.getFavoriteIdsFlow().collect { data ->
-                _favoriteIds.value = data.favoriteIds
+            _courses.value = getCoursesUseCase()
+            getFavoriteIdsFlowUseCase().collect { ids ->
+                _favoriteIds.value = ids
             }
         }
     }
@@ -38,11 +40,7 @@ class HomeViewModel(
 
     fun toggleFavorite(courseId: Int) {
         viewModelScope.launch {
-            if (favoritesRepository.isFavorite(courseId)) {
-                favoritesRepository.removeFavorite(courseId)
-            } else {
-                favoritesRepository.addFavorite(courseId)
-            }
+            toggleFavoriteUseCase(courseId)
         }
     }
 }

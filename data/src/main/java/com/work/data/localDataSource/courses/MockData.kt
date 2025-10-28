@@ -2,7 +2,7 @@ package com.work.data.localDataSource.courses
 
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import com.work.data.localDataSource.models.Course
+import com.work.domain.models.Course
 
 internal object MockData {
     private const val jsonString =

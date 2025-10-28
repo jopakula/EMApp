@@ -18,6 +18,7 @@ converterGson = "2.9.0"
 koinAndroidxCompose = "4.0.0"
 kotlinx-serialization = "1.8.1"
 kstore = "0.8.0"
+kotlinxCoroutines = "1.10.1"
 
 [libraries]
 
@@ -42,6 +43,9 @@ kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-
 kstore-file = { module = "io.github.xxfast:kstore-file", version.ref = "kstore" }
 kstore = { module = "io.github.xxfast:kstore", version.ref = "kstore" }
 
+# Coroutines
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -59,6 +63,7 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
