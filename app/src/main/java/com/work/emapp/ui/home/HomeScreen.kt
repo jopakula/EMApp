@@ -17,6 +17,7 @@ fun HomeScreen(
     viewModel: HomeViewModel,
 ) {
     val courses by viewModel.courses
+    val favoriteIds by viewModel.favoriteIds
 
     LazyColumn(
         modifier = Modifier
@@ -27,10 +28,12 @@ fun HomeScreen(
         items(courses) { course ->
             CourseCard(
                 course = course,
+                isFavorite = favoriteIds.contains(course.id),
                 onClick = {
                     onCardClick(course)
                     viewModel.chooseCourse(course)
-                }
+                },
+                onFavoriteClick = { viewModel.toggleFavorite(course.id) }
             )
         }
     }
