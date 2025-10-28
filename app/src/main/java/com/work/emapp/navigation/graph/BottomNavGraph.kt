@@ -1,7 +1,6 @@
 package com.work.emapp.navigation.graph
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,13 +13,14 @@ import com.work.emapp.ui.favorites.FavoritesScreen
 import com.work.emapp.ui.home.CardDetailScreen
 import com.work.emapp.ui.home.HomeScreen
 import com.work.emapp.ui.home.HomeViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun BottomNavGraph(
     navController: NavHostController,
     rootNavController: NavHostController
 ) {
-    val viewModel: HomeViewModel = viewModel()
+    val viewModel: HomeViewModel = koinViewModel()
     NavHost(
         navController = navController,
         startDestination = BottomBarScreens.Home.route,

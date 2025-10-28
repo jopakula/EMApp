@@ -10,7 +10,6 @@ import com.work.emapp.navigation.screens.AuthScreens
 import com.work.emapp.ui.bottom.BottomNavScreen
 import com.work.emapp.ui.registration.RegistrationScreen
 
-
 @Composable
 fun RootNavigationGraph(rootNavController: NavHostController) {
     NavHost(
