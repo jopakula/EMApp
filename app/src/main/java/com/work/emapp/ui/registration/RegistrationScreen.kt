@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.work.uikit.inputField.EmailMaskTransformation
 import com.work.uikit.inputField.MyInputField
 
 @Composable
@@ -50,6 +51,7 @@ fun RegistrationScreen(onRegisterSuccess: () -> Unit) {
             hint = "example@gmail.com",
             keyboardType = KeyboardType.Email,
             colorBG = Color.DarkGray.copy(alpha = 0.8f),
+            visualTransformation = EmailMaskTransformation(),
             onValueChange = { input ->
                 val filtered = input.filter { it !in 'А'..'я' && it !in "Ёё" }
                 email = filtered
