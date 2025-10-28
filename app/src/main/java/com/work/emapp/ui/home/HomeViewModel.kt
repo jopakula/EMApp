@@ -1,6 +1,7 @@
 package com.work.emapp.ui.home
 
 import androidx.compose.runtime.State
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,8 +17,17 @@ class HomeViewModel(
     private val toggleFavoriteUseCase: ToggleFavoriteUseCase,
 ) : ViewModel() {
 
-    private val _courses = mutableStateOf<List<Course>>(emptyList())
-    val courses: State<List<Course>> = _courses
+    private val _rawCourses = mutableStateOf<List<Course>>(emptyList())
+    private val _sortDescending = mutableStateOf(true)
+
+    val courses: State<List<Course>> = derivedStateOf {
+        val sorted = if (_sortDescending.value) {
+            _rawCourses.value.sortedByDescending { it.publishDate }
+        } else {
+            _rawCourses.value.sortedBy { it.publishDate }
+        }
+        sorted
+    }
 
     private val _selectedCourse = mutableStateOf<Course?>(null)
     val selectedCourse: State<Course?> = _selectedCourse
@@ -27,7 +37,7 @@ class HomeViewModel(
 
     init {
         viewModelScope.launch {
-            _courses.value = getCoursesUseCase()
+            _rawCourses.value = getCoursesUseCase()
             getFavoriteIdsFlowUseCase().collect { ids ->
                 _favoriteIds.value = ids
             }
@@ -42,5 +52,9 @@ class HomeViewModel(
         viewModelScope.launch {
             toggleFavoriteUseCase(courseId)
         }
+    }
+
+    fun toggleSortOrder() {
+        _sortDescending.value = !_sortDescending.value
     }
 }
