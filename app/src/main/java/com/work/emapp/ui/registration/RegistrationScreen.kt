@@ -127,7 +127,6 @@ fun RegistrationScreen(
                 onClick = onRegisterSuccess,
                 enabled = isButtonEnabled,
             )
-
             MyButton(
                 text = "To main",
                 onClick = onRegisterSuccess,
@@ -137,7 +136,6 @@ fun RegistrationScreen(
                 thickness = 1.dp,
                 color = Divider
             )
-
             Column(
                 modifier = Modifier
                     .fillMaxWidth(),
