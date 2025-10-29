@@ -149,14 +149,14 @@ fun RegistrationScreen(
                 ) {
                     Text(
                         modifier = Modifier.padding(end = 6.dp),
-                        text = "Нету аккаунта?",
+                        text = "Нет аккаунта?",
                         color = Color.White,
                         fontWeight = FontWeight.SemiBold,
                     )
                     Text(
                         modifier = Modifier
                             .clickable { },
-                        text = "Регитрация",
+                        text = "Региcтрация",
                         color = SelectedColor,
                         fontWeight = FontWeight.SemiBold,
 
