@@ -71,8 +71,8 @@ fun HomeScreen(
                     title = course.title,
                     price = course.price,
                     onClick = {
-                        onCardClick(course)
                         viewModel.chooseCourse(course)
+                        onCardClick(course)
                     },
                     isFavorite = favoriteIds.contains(course.id),
                     onFavoriteClick = { viewModel.toggleFavorite(course.id) },

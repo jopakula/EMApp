@@ -60,7 +60,7 @@ fun CourseCard(
     val imageRes = when (index % 5) {
         0, 3 -> R.drawable.image_1
         1, 4 -> R.drawable.image_2
-        2    -> R.drawable.image_3  // 3-я (2)
+        2    -> R.drawable.image_3
         else -> R.drawable.image_1
     }
 
