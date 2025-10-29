@@ -1,5 +1,7 @@
 package com.work.emapp.ui.home
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,7 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
@@ -21,7 +23,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.work.domain.models.Course
+import com.work.emapp.R
+import com.work.uikit.card.CourseCard
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeScreen(
     onCardClick: (Course) -> Unit,
@@ -55,15 +60,22 @@ fun HomeScreen(
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(courses) { course ->
+            itemsIndexed(courses) { index, course ->
                 CourseCard(
-                    course = course,
-                    isFavorite = favoriteIds.contains(course.id),
+                    index = index,
+                    blankIcon = R.drawable.bookmark,
+                    filledIcon = R.drawable.bookmark_filled,
+                    text = course.text,
+                    rate = course.rate,
+                    startDate = course.startDate,
+                    title = course.title,
+                    price = course.price,
                     onClick = {
                         onCardClick(course)
                         viewModel.chooseCourse(course)
                     },
-                    onFavoriteClick = { viewModel.toggleFavorite(course.id) }
+                    isFavorite = favoriteIds.contains(course.id),
+                    onFavoriteClick = { viewModel.toggleFavorite(course.id) },
                 )
             }
         }

@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.work.emapp.navigation.graph.BottomNavGraph
@@ -17,7 +16,7 @@ fun BottomNavScreen(rootNavController: NavHostController) {
         bottomBar = {
             BottomBar(navController = navController)
         },
-        containerColor = Color(0xFFFCE4EC)
+//        containerColor = Color(0xFFFCE4EC)
     ) { padding ->
         Box(modifier = Modifier.padding(padding)) {
             BottomNavGraph(

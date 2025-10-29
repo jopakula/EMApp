@@ -131,7 +131,6 @@ fun RegistrationScreen(
             MyButton(
                 text = "To main",
                 onClick = onRegisterSuccess,
-                enabled = isButtonEnabled,
             )
             HorizontalDivider(
                 modifier = Modifier.fillMaxWidth(),
