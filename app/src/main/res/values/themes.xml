@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.EMApp" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.EMApp" parent="android:Theme.Material.Light.NoActionBar" >
+
+        <item name="android:windowBackground">@color/logo_bg</item>
+    </style>
 </resources>
