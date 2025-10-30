@@ -51,7 +51,9 @@ fun HomeScreen(
     ) {
 
         Image(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp),
             painter = painterResource(R.drawable.ic_search_bar),
             contentDescription = null,
             contentScale = ContentScale.FillWidth
