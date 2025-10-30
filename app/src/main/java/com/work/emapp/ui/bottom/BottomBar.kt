@@ -1,6 +1,8 @@
 package com.work.emapp.ui.bottom
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -10,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -17,6 +20,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.work.emapp.navigation.screens.BottomBarScreens
 import com.work.uikit.common.DarkGray
+import com.work.uikit.common.Divider
 import com.work.uikit.common.SelectedColor
 import com.work.uikit.common.UnselectedColor
 
@@ -30,15 +34,21 @@ fun BottomBar(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    NavigationBar(
-        containerColor = DarkGray
-    ) {
-        screens.forEach { screen ->
-            AddItem(
-                screen = screen,
-                currentDestination = currentDestination,
-                navController = navController
-            )
+    Column {
+        HorizontalDivider(
+            thickness = 1.5.dp,
+            color = Divider
+        )
+        NavigationBar(
+            containerColor = DarkGray
+        ) {
+            screens.forEach { screen ->
+                AddItem(
+                    screen = screen,
+                    currentDestination = currentDestination,
+                    navController = navController
+                )
+            }
         }
     }
 }

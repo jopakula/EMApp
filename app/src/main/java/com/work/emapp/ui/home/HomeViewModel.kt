@@ -19,6 +19,7 @@ class HomeViewModel(
 
     private val _rawCourses = mutableStateOf<List<Course>>(emptyList())
     private val _sortDescending = mutableStateOf(true)
+    val sortState: State<Boolean> = _sortDescending
 
     val courses: State<List<Course>> = derivedStateOf {
         val sorted = if (_sortDescending.value) {
