@@ -13,7 +13,7 @@ val appModule = module {
             getCoursesUseCase = get(),
             getFavoriteIdsFlowUseCase = get(),
             toggleFavoriteUseCase = get(),
-
+            sortCoursesUseCase = get(),
         )
     }
 
