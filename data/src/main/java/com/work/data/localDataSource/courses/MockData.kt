@@ -2,7 +2,7 @@ package com.work.data.localDataSource.courses
 
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import com.work.domain.models.Course
+import com.work.data.localDataSource.models.CourseDto
 
 internal object MockData {
     private const val jsonString =
@@ -63,10 +63,10 @@ internal object MockData {
 }
     """
 
-    fun getCourses(): List<Course> {
+    fun getCourses(): List<CourseDto> {
         val gson = Gson()
         val jsonObject = gson.fromJson(jsonString, JsonObject::class.java)
         val coursesArray = jsonObject.getAsJsonArray("courses")
-        return gson.fromJson(coursesArray, Array<Course>::class.java).toList()
+        return gson.fromJson(coursesArray, Array<CourseDto>::class.java).toList()
     }
 }
