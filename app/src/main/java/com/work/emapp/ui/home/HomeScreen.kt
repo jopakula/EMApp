@@ -24,11 +24,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.work.domain.models.Course
 import com.work.emapp.R
+import com.work.emapp.R.string.sort_by_date
 import com.work.uikit.card.CourseCard
 import com.work.uikit.common.SelectedColor
 
@@ -38,9 +41,9 @@ fun HomeScreen(
     onCardClick: (Course) -> Unit,
     viewModel: HomeViewModel,
 ) {
-    val courses by viewModel.courses
+    val courses by viewModel.courses.collectAsStateWithLifecycle()
     val favoriteIds by viewModel.favoriteIds
-    val sortState by viewModel.sortState
+    val sortDescending by viewModel.sortDescending.collectAsStateWithLifecycle()
 
     Column(
         modifier = Modifier
@@ -67,16 +70,16 @@ fun HomeScreen(
         ) {
             Text(
                 modifier = Modifier.padding(end = 4.dp),
-                text = "По дате добавления",
+                text = stringResource(sort_by_date),
                 fontSize = 18.sp,
-                color = if (sortState) Color.White else SelectedColor,
+                color = if (sortDescending) Color.White else SelectedColor,
                 fontWeight = FontWeight.Normal,
             )
             Icon(
                 painter = painterResource(R.drawable.ic_arrow_down_up),
                 contentDescription = null,
                 modifier = Modifier.size(18.dp),
-                tint = if (sortState) Color.White else SelectedColor,
+                tint = if (sortDescending) Color.White else SelectedColor,
             )
         }
 

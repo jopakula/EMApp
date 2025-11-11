@@ -28,10 +28,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.work.emapp.R
+import com.work.emapp.R.string.about_course
+import com.work.emapp.R.string.author_name
+import com.work.emapp.R.string.course_author
+import com.work.emapp.R.string.go_to_platform
+import com.work.emapp.R.string.start_course
 import com.work.uikit.R.drawable.image
 import com.work.uikit.button.MyButton
 import com.work.uikit.card.formatDate
@@ -81,7 +87,7 @@ fun CardDetailScreen(
                         ) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Favorite",
+                            contentDescription = null,
                             tint = Color.Black
                         )
                     }
@@ -95,7 +101,7 @@ fun CardDetailScreen(
                         ) {
                         Icon(
                             painter = painterResource(id = if (favoriteIds.contains(course?.id)) R.drawable.bookmark_filled else R.drawable.bookmark),
-                            contentDescription = "Favorite",
+                            contentDescription = null,
                             tint = if (favoriteIds.contains(course?.id)) Color.Unspecified else Color.Black
                         )
                     }
@@ -184,13 +190,13 @@ fun CardDetailScreen(
                     )
                     Column {
                         Text(
-                            text = "Автор",
+                            text = stringResource(course_author),
                             fontSize = 14.sp,
                             color = Color.Gray,
                             fontWeight = FontWeight.Normal
                         )
                         Text(
-                            text = "Merion Academy",
+                            text = stringResource(author_name),
                             fontSize = 16.sp,
                             color = Color.White,
                             fontWeight = FontWeight.Medium
@@ -206,10 +212,10 @@ fun CardDetailScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 MyButton(
-                    text = "Начать курс",
+                    text = stringResource(start_course),
                 )
                 MyButton(
-                    text = "Перейти на платформу",
+                    text = stringResource(go_to_platform),
                     buttonColor = DarkGray
                 )
             }
@@ -222,7 +228,7 @@ fun CardDetailScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Text(
-                    text = "О курсе",
+                    text = stringResource(about_course),
                     fontSize = 22.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Normal

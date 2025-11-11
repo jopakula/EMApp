@@ -1,3 +1,37 @@
 <resources>
+
     <string name="app_name">EMApp</string>
+
+    <!-- RegistrationScreen -->
+    <string name="login_title">Вход</string>
+    <string name="email_label">Email</string>
+    <string name="email_hint">example@gmail.com</string>
+    <string name="password_label">Пароль</string>
+    <string name="password_hint">Введите пароль</string>
+    <string name="login_button">Вход</string>
+    <string name="to_main_button">To main</string>
+    <string name="no_account">Нет аккаунта?</string>
+    <string name="register_link">Регистрация</string>
+    <string name="forgot_password">Забыл пароль</string>
+
+    <!-- HomeScreen -->
+    <string name="sort_by_date">По дате добавления</string>
+
+    <!-- CardDetailScreen -->
+    <string name="course_author">Автор</string>
+    <string name="author_name">Merion Academy</string>
+    <string name="start_course">Начать курс</string>
+    <string name="go_to_platform">Перейти на платформу</string>
+    <string name="about_course"> OI курсе</string>
+
+    <!-- FavoritesScreen -->
+    <string name="favorites_title">Избранное</string>
+
+    <!-- AccountScreen -->
+    <string name="profile_title">Профиль</string>
+    <string name="support">Написать в поддержку</string>
+    <string name="settings">Настройки</string>
+    <string name="logout">Выйти из аккаунта</string>
+    <string name="your_courses">Ваши курсы</string>
+
 </resources>

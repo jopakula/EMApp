@@ -8,27 +8,37 @@ import androidx.lifecycle.viewModelScope
 import com.work.domain.models.Course
 import com.work.domain.useCases.GetCoursesUseCase
 import com.work.domain.useCases.GetFavoriteIdsFlowUseCase
+import com.work.domain.useCases.SortCoursesUseCase
 import com.work.domain.useCases.ToggleFavoriteUseCase
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val getCoursesUseCase: GetCoursesUseCase,
     private val getFavoriteIdsFlowUseCase: GetFavoriteIdsFlowUseCase,
     private val toggleFavoriteUseCase: ToggleFavoriteUseCase,
+    private val sortCoursesUseCase: SortCoursesUseCase,
 ) : ViewModel() {
 
-    private val _rawCourses = mutableStateOf<List<Course>>(emptyList())
-    private val _sortDescending = mutableStateOf(true)
-    val sortState: State<Boolean> = _sortDescending
+    private val _rawCourses = MutableStateFlow<List<Course>>(emptyList())
 
-    val courses: State<List<Course>> = derivedStateOf {
-        val sorted = if (_sortDescending.value) {
-            _rawCourses.value.sortedByDescending { it.publishDate }
-        } else {
-            _rawCourses.value.sortedBy { it.publishDate }
-        }
-        sorted
-    }
+    private val _sortDescending = MutableStateFlow(true)
+    val sortDescending: StateFlow<Boolean> = _sortDescending
+
+    val courses: StateFlow<List<Course>> = combine(
+        _rawCourses,
+        _sortDescending
+    ) { rawCourses, descending ->
+        sortCoursesUseCase(rawCourses, ascending = !descending)
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5_000),
+        initialValue = emptyList()
+    )
 
     private val _selectedCourse = mutableStateOf<Course?>(null)
     val selectedCourse: State<Course?> = _selectedCourse

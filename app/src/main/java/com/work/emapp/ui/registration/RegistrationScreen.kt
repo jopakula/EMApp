@@ -20,11 +20,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.work.emapp.R.string.email_hint
+import com.work.emapp.R.string.email_label
+import com.work.emapp.R.string.forgot_password
+import com.work.emapp.R.string.login_button
+import com.work.emapp.R.string.login_title
+import com.work.emapp.R.string.no_account
+import com.work.emapp.R.string.password_hint
+import com.work.emapp.R.string.password_label
+import com.work.emapp.R.string.register_link
+import com.work.emapp.R.string.to_main_button
+import com.work.emapp.constants.Constants
 import com.work.uikit.R.drawable.ic_ok
 import com.work.uikit.R.drawable.ic_vk
 import com.work.uikit.button.MyButton
@@ -65,7 +77,7 @@ fun RegistrationScreen(
         ) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text = "Вход",
+                text = stringResource(login_title),
                 fontSize = 28.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Normal,
@@ -82,14 +94,14 @@ fun RegistrationScreen(
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
-                        text = "Email",
+                        text = stringResource(email_label),
                         fontSize = 16.sp,
                         color = Color.White,
                         fontWeight = FontWeight.Normal,
                     )
                     MyInputField(
                         text = email,
-                        hint = "example@gmail.com",
+                        hint = stringResource(email_hint),
                         keyboardType = KeyboardType.Email,
                         colorBG = Color.DarkGray.copy(alpha = 0.8f),
                         visualTransformation = EmailMaskTransformation(),
@@ -106,7 +118,7 @@ fun RegistrationScreen(
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
-                        text = "Пароль",
+                        text = stringResource(password_label),
                         fontSize = 16.sp,
                         color = Color.White,
                         fontWeight = FontWeight.Normal,
@@ -114,7 +126,7 @@ fun RegistrationScreen(
 
                     MyInputField(
                         text = password,
-                        hint = "Введите пароль",
+                        hint = stringResource(password_hint),
                         keyboardType = KeyboardType.Password,
                         colorBG = Color.DarkGray.copy(alpha = 0.8f),
                         onValueChange = { password = it },
@@ -123,12 +135,12 @@ fun RegistrationScreen(
                 }
             }
             MyButton(
-                text = "Вход",
+                text = stringResource(login_button),
                 onClick = onRegisterSuccess,
                 enabled = isButtonEnabled,
             )
             MyButton(
-                text = "To main",
+                text = stringResource(to_main_button),
                 onClick = onRegisterSuccess,
             )
             HorizontalDivider(
@@ -149,14 +161,14 @@ fun RegistrationScreen(
                 ) {
                     Text(
                         modifier = Modifier.padding(end = 6.dp),
-                        text = "Нет аккаунта?",
+                        text = stringResource(no_account),
                         color = Color.White,
                         fontWeight = FontWeight.SemiBold,
                     )
                     Text(
                         modifier = Modifier
                             .clickable { },
-                        text = "Региcтрация",
+                        text = stringResource(register_link),
                         color = SelectedColor,
                         fontWeight = FontWeight.SemiBold,
 
@@ -165,7 +177,7 @@ fun RegistrationScreen(
                 Text(
                     modifier = Modifier
                         .clickable { },
-                    text = "Забыл пароль",
+                    text = stringResource(forgot_password),
                     color = SelectedColor,
                     fontWeight = FontWeight.SemiBold,
                 )
@@ -182,7 +194,7 @@ fun RegistrationScreen(
                         .weight(1F),
                     icon = painterResource(ic_vk),
                     onClick = {
-                        openUrl(context = context, url = "https://vk.com/")
+                        openUrl(context = context, url = Constants.VK_URL)
                     },
                     buttonColor = Blue,
                 )
@@ -191,7 +203,7 @@ fun RegistrationScreen(
                         .weight(1F),
                     icon = painterResource(ic_ok),
                     onClick = {
-                        openUrl(context = context, url = "https://ok.com/")
+                        openUrl(context = context, url = Constants.OK_URL)
                     },
                     buttonColor = Orange,
                 )
