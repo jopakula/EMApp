@@ -24,10 +24,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.work.emapp.R
+import com.work.emapp.R.drawable
+import com.work.emapp.R.string.logout
+import com.work.emapp.R.string.profile_title
+import com.work.emapp.R.string.settings
+import com.work.emapp.R.string.support
+import com.work.emapp.R.string.your_courses
 import com.work.uikit.card.CourseCard
 import com.work.uikit.common.DarkGray
 import com.work.uikit.common.Divider
@@ -55,7 +61,7 @@ fun AccountScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                text = "Профиль",
+                text = stringResource(profile_title),
                 fontSize = 24.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Normal,
@@ -78,18 +84,18 @@ fun AccountScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
-                            .clickable {  },
+                            .clickable { },
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween,
                     ) {
                         Text(
-                            text = "Написать в поддержку",
+                            text = stringResource(support),
                             fontSize = 18.sp,
                             color = Color.White,
                             fontWeight = FontWeight.Medium,
                         )
                         Icon(
-                            painter = painterResource(R.drawable.ic_right),
+                            painter = painterResource(drawable.ic_right),
                             contentDescription = null,
                             tint = Color.Unspecified,
                         )
@@ -103,18 +109,18 @@ fun AccountScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
-                            .clickable {  },
+                            .clickable { },
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween,
                     ) {
                         Text(
-                            text = "Настройки",
+                            text = stringResource(settings),
                             fontSize = 18.sp,
                             color = Color.White,
                             fontWeight = FontWeight.Medium,
                         )
                         Icon(
-                            painter = painterResource(R.drawable.ic_right),
+                            painter = painterResource(drawable.ic_right),
                             contentDescription = null,
                             tint = Color.Unspecified,
                         )
@@ -133,13 +139,13 @@ fun AccountScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                     ) {
                         Text(
-                            text = "Выйти из аккаунта",
+                            text = stringResource(logout),
                             fontSize = 18.sp,
                             color = Color.White,
                             fontWeight = FontWeight.Medium,
                         )
                         Icon(
-                            painter = painterResource(R.drawable.ic_right),
+                            painter = painterResource(drawable.ic_right),
                             contentDescription = null,
                             tint = Color.Unspecified,
                         )
@@ -154,7 +160,7 @@ fun AccountScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                text = "Ваши курсы",
+                text = stringResource(your_courses),
                 fontSize = 24.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Normal,
@@ -168,8 +174,8 @@ fun AccountScreen(
                 itemsIndexed(sortedCourses) { index, course ->
                     CourseCard(
                         index = index,
-                        blankIcon = R.drawable.bookmark,
-                        filledIcon = R.drawable.bookmark_filled,
+                        blankIcon = drawable.bookmark,
+                        filledIcon = drawable.bookmark_filled,
                         text = course.text,
                         rate = course.rate,
                         startDate = course.startDate,

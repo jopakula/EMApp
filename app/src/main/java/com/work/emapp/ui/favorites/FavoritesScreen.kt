@@ -17,10 +17,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.work.emapp.R
+import com.work.emapp.R.drawable
+import com.work.emapp.R.string.favorites_title
 import com.work.uikit.card.CourseCard
 import org.koin.androidx.compose.koinViewModel
 
@@ -43,7 +45,7 @@ fun FavoritesScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                text = "Избранное",
+                text = stringResource(favorites_title),
                 fontSize = 24.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Normal,
@@ -57,8 +59,8 @@ fun FavoritesScreen(
                 itemsIndexed(favoriteCourses) { index, course ->
                     CourseCard(
                         index = index,
-                        blankIcon = R.drawable.bookmark,
-                        filledIcon = R.drawable.bookmark_filled,
+                        blankIcon = drawable.bookmark,
+                        filledIcon = drawable.bookmark_filled,
                         text = course.text,
                         rate = course.rate,
                         startDate = course.startDate,
